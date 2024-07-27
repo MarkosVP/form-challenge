@@ -1,0 +1,9 @@
+{
+    "name": "marcos/challenge",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}
