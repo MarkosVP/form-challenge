@@ -1,9 +1,9 @@
 <?php
 
 // Load the autoloader on the project
-require './vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
-use App\Components\DOM\Page;
+use App\Components\Dom\Page;
 
 // Create a new Page
 $page = new Page('Form Challenge');

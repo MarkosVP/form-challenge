@@ -1,3 +1,6 @@
+# Delete the vendor data
+sudo rm -rf vendor
+
 # Stop the container
 docker container stop challenge
 

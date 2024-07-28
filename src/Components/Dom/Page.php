@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Components\DOM;
+namespace App\Components\Dom;
 
 class Page {
     /**
