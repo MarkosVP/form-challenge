@@ -2,14 +2,12 @@
 
 namespace App\Components\Input;
 
+/**
+ * The base Input layout form a Input DOM element
+ *
+ * @property string $id The id of this Input to be rendered inside the DOM
+ */
 interface Input {
-    /**
-     * The id of this Input to be rendered inside the DOM
-     *
-     * @var string
-     */
-    protected string $id;
-
     /**
      * Returns the Input ID on the DOM
      *
@@ -23,9 +21,4 @@ interface Input {
      * @return string
      */
     public function render(): string;
-
-    /**
-     * Generates an Input for the DOM
-     */
-    public function __construct();
 }

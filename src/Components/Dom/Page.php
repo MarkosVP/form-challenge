@@ -69,15 +69,28 @@ class Page {
         $head = "<head><title>$this->pageTitle</title>";
 
         // Add all CSS inside a Style tag if any exists
-        if (!empty($this->styles)) {
-            $head .= "<style>";
-
-            foreach ($this->styles as $css) {
-                $head .= $css;
+        $head .= "<style type='text/css'> html {
+                display: flex;
+                height: 100%;
             }
 
-            $head .= "</style>";
+            body {
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+                justify-content: center;
+                flex-wrap: wrap;
+                margin: 0;
+                flex-grow: 1;
+                background-color: #E4E4E4;
+                font-family: arial;
+        }";
+
+        foreach ($this->styles as $css) {
+            $head .= $css;
         }
+
+        $head .= "</style>";
 
         // Add the head on the page
         $pageHTML .= $head . '</head>';
@@ -87,7 +100,7 @@ class Page {
 
         // Add all elements to the body
         foreach ($this->elements as $domEl) {
-            $body .= $domEl;
+            $body .= "<div>$domEl</div>";
         }
 
         // Add all scriot to the body if any exists

@@ -1,13 +1,28 @@
+# Project
+
 You've been given the assignment to make a form template library for reuse in php 7+ using OOP.
 This will be used to design a website that other developers will add to.
 For now you're tasked with running sample.php that generates a web view similar to the screenshot.png.
 
-Given Form.php, Input.php, Sample.php create a TextInput.php class in addition to filling out the stubbed methods for the library.
+# Project Requirements
 
+This project requires docker and a shell script executor to start everything.
 
-#################### Running the project ####################
+> [!WARNING]
+> A WSL + Windows environment was used to build thsi project, so a similar env or a Linux is highly recomended
 
-This project requires docker.
+# Running the project
 
-I`ve created a shell file to make it easy for anyone to run the project, you just need to run the "run_project" shell file
-and a php container will be created inside your docker running the project on the http://localhost:8080/ url. Pretty simple.
+If you are running the project for the first time, you can use this command:
+
+```bash
+sh ./devops/shell/run_project.sh
+```
+
+Or if you are running it again, use this to rebuild and up the project container
+
+```bash
+sh ./devops/shell/rebuild_project.sh
+```
+
+After the command runs, the project should be visible on this URL: http://localhost:8080/

@@ -10,6 +10,13 @@ use Exception;
 class TextInput implements Input
 {
     /**
+     * The id of this Input to be rendered inside the DOM
+     *
+     * @var string
+     */
+    protected string $id;
+
+    /**
      * The label to be shown inside the DOM for this Input
      *
      * @var string
@@ -78,7 +85,7 @@ class TextInput implements Input
             $typeInformed === null ||
             in_array($typeInformed->value, $this->invalidTypes)
         ) {
-            throw new Exception('Wrong Text Input Type');
+            throw new Exception('Wrong Text Input Type. Type informed ' . $type);
         }
 
         // Save the data on the properties
