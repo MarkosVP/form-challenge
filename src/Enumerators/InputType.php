@@ -7,7 +7,8 @@ namespace App\Enumerators;
  *
  * Types obtained from https://www.w3schools.com/html/html_form_input_types.asp
  */
-enum InputType: string {
+enum InputType: string
+{
     /** Button Input Type */
     case BUTTON = 'button';
 

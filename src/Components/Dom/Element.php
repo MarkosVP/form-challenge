@@ -5,7 +5,8 @@ namespace App\Components\Dom;
 /**
  * An DOM Element to be converted an inserted inside a Page. Contains a HTML and can contain CSS and JS scripts
  */
-class Element {
+class Element
+{
     /**
      * The HTML as a string to be added on the DOM
      *

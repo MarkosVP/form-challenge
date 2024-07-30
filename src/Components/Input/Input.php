@@ -7,7 +7,8 @@ namespace App\Components\Input;
  *
  * @property string $id The id of this Input to be rendered inside the DOM
  */
-interface Input {
+interface Input
+{
     /**
      * Returns the Input ID on the DOM
      *

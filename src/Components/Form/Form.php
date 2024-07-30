@@ -7,7 +7,8 @@ use App\Components\Input\Input;
 use App\Components\Input\TextInput;
 use Exception;
 
-class Form {
+class Form
+{
     /** @var Input[] The list of Inputs inside this Form */
     protected array $inputs = [];
 
@@ -23,7 +24,8 @@ class Form {
      *
      * @param string $id The ID of the form on the DOM. Always preceded by the string 'form-'
      */
-    public function __construct(string $id) {
+    public function __construct(string $id)
+    {
         // Save the data on the properties
         $this->id = 'form-' . $id;
     }
@@ -34,7 +36,8 @@ class Form {
      * @param Input $input
      * @return void
      */
-    public function addInput(Input $input) {
+    public function addInput(Input $input)
+    {
         // Check if the Input already exists based on the ID
         foreach ($this->inputs as $currInput) {
             // Compare the ID

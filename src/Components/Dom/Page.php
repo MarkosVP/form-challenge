@@ -2,7 +2,8 @@
 
 namespace App\Components\Dom;
 
-class Page {
+class Page
+{
     /**
      * The Page Elements in HTML
      *
