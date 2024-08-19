@@ -31,6 +31,16 @@ class Form
     }
 
     /**
+     * Returns the current Form Id that will be shown on the DOM
+     *
+     * @return string
+     */
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+    /**
      * Inserts an `App\Components\Input` into the form
      *
      * @param Input $input
@@ -44,12 +54,22 @@ class Form
             if ($currInput->getId() === $input->getId()) {
                 $idName = $input->getId();
 
-                throw new Exception("An Input with ID $idName already exist on the  form");
+                throw new Exception("An Input with ID '$idName' already exist on the form");
             }
         }
 
         // Add the Input into the form
         $this->inputs[] = $input;
+    }
+
+    /**
+     * Returns an array with all the Inputs added to the current Form
+     *
+     * @return Input[]
+     */
+    public function getInputs(): array
+    {
+        return $this->inputs;
     }
 
     /**

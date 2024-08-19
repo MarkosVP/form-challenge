@@ -85,7 +85,7 @@ class TextInput implements Input
             $typeInformed === null ||
             in_array($typeInformed->value, $this->invalidTypes)
         ) {
-            throw new Exception('Wrong Text Input Type. Type informed ' . $type);
+            throw new Exception("Wrong Text Input Type. Type informed '$type'");
         }
 
         // Save the data on the properties

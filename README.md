@@ -26,3 +26,17 @@ sh ./devops/shell/rebuild_project.sh
 ```
 
 After the command runs, the project should be visible on this URL: http://localhost:8080/
+
+# Testing the project
+
+This project uses PHPUnit for unitary testing of each feature created. To run all tests you can use any of the following commands
+
+```bash
+sh ./devops/shell/run_tests.sh
+```
+
+```bash
+docker exec challenge vendor/bin/phpunit ./tests
+```
+
+Both commands will run every unit test avaliable in the project.

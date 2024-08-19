@@ -33,6 +33,12 @@ class ButtonInput implements Input
         InputType::SUBMIT->value
     );
 
+    /**
+     * Creates a Button Input for the DOM
+     *
+     * @param string $id The name of the button to be created. Will have a `button-` prefix in front of the passed ID
+     * @param string $type The type of the button according to the `InputType` enumerator
+     */
     public function __construct($id, $type = InputType::BUTTON->value)
     {
         // Check if the informed type exists
@@ -43,11 +49,11 @@ class ButtonInput implements Input
             $typeInformed === null ||
             !in_array($typeInformed->value, $this->validTypes)
         ) {
-            throw new Exception('Wrong Button Input Type. Type informed ' . $type);
+            throw new Exception("Wrong Button Input Type. Type informed '$type'");
         }
 
         // Save the data inside the properties
-        $this->id = $id;
+        $this->id = 'button-' . $id;
         $this->type = $type;
     }
 
