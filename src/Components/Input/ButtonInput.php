@@ -3,6 +3,7 @@
 namespace App\Components\Input;
 
 use App\Components\Input\Input;
+use App\Enumerators\BaseInputProperties;
 use App\Enumerators\InputType;
 use Exception;
 
@@ -34,6 +35,13 @@ class ButtonInput implements Input
     );
 
     /**
+     * An associative array of custom properties added to the input
+     *
+     * @var array<string,string>
+     */
+    protected array $customProperties = [];
+
+    /**
      * Creates a Button Input for the DOM
      *
      * @param string $id The name of the button to be created. Will have a `button-` prefix in front of the passed ID
@@ -62,8 +70,28 @@ class ButtonInput implements Input
         return $this->id;
     }
 
+    public function addProperty(string $propertyName, string $propertyValue): void
+    {
+        // Check if the propertiy already exists
+        if (key_exists($propertyName, $this->customProperties)) {
+            throw new Exception("The property '$propertyName' already exists");
+        }
+
+        // Add the property on the array
+        $this->customProperties[$propertyName] = $propertyValue;
+    }
+
     public function render(): string
     {
-        return "<input id='$this->id' type='$this->type' />";
+        // Declares the custom properties string
+        $customProperties = '';
+
+        // Goes throw each custom property added
+        foreach ($this->customProperties as $propertyName => $propertyValue) {
+            // Add the property to the string
+            $customProperties .= " $propertyName=\"$propertyValue\"";
+        }
+
+        return "<input " . BaseInputProperties::ID->value . "='$this->id' " . BaseInputProperties::TYPE->value . "='$this->type'$customProperties />";
     }
 }

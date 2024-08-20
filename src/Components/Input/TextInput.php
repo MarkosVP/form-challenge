@@ -3,6 +3,7 @@
 namespace App\Components\Input;
 
 use App\Components\Input\Input;
+use App\Enumerators\BaseInputProperties;
 use App\Enumerators\InputType;
 
 use Exception;
@@ -55,6 +56,13 @@ class TextInput implements Input
         InputType::FILE->value,
         InputType::SUBMIT->value
     );
+
+    /**
+     * An associative array of custom properties added to the input
+     *
+     * @var array<string,string>
+     */
+    protected array $customProperties = [];
 
     /**
      * Generates a Text Input for the DOM
@@ -131,8 +139,37 @@ class TextInput implements Input
         return $this->placeholder;
     }
 
+    public function addProperty(string $propertyName, string $propertyValue): void
+    {
+        // Check if the property is one of the default ones that should not be overriten
+        if (BaseInputProperties::tryFrom($propertyName) !== null) {
+            throw new Exception("The property '$propertyName' should not be overriten/used");
+        }
+
+        // Check if the propertiy already exists
+        if (key_exists($propertyName, $this->customProperties)) {
+            throw new Exception("The property '$propertyName' already exists");
+        }
+
+        // Add the property on the array
+        $this->customProperties[$propertyName] = $propertyValue;
+    }
+
     public function render(): string
     {
-        return "<input id='$this->id' type='$this->type' value='$this->initVal' placeholder='$this->placeholder' />";
+        // Declares the custom properties string
+        $customProperties = '';
+
+        // Goes throw each custom property added
+        foreach ($this->customProperties as $propertyName => $propertyValue) {
+            // Add the property to the string
+            $customProperties .= " $propertyName=\"$propertyValue\"";
+        }
+
+        return "<input " .
+                BaseInputProperties::ID->value . "='$this->id' " .
+                BaseInputProperties::TYPE->value . "='$this->type' " .
+                BaseInputProperties::VALUE->value . "='$this->initVal' " .
+                BaseInputProperties::PLACEHOLDER->value . "='$this->placeholder'$customProperties />";
     }
 }
